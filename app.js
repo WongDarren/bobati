@@ -7,8 +7,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+//This is where all the routes will live (basically all the pages)
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var resultsRouter = require('./routes/results');
 
 var app = express();
 
@@ -22,8 +25,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//This is where all the pages will actually declared, using '/[pagename]' here
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/results', resultsRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
