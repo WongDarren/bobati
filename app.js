@@ -51,4 +51,12 @@ app.use(function(err, req, res, next) {
 
 
 
+// Heroku must listen on a specific port
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+
+
 module.exports = app;
