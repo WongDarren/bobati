@@ -9248,13 +9248,15 @@ textarea.form-control {
     left: 0;
     right: 0;
     font-weight: normal;
-    font-size: 100px;
+    /*font-size: 100px;*/
+    font-size: 60px;
     display: block;
     margin-bottom: 0;
     color: rgba(0, 0, 0, 0.2);
     color: #c8a97e;
     line-height: 1;
-    font-family: "Great Vibes", cursive;
+    /*font-family: "Great Vibes", cursive;*/
+    font-family: "Poppins", Arial, sans-serif;
     margin-top: 0;
     z-index: -1; }
     @media (max-width: 767.98px) {
