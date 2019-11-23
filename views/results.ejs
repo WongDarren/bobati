@@ -265,16 +265,23 @@
               <button class="btnSelection mb-1" data-eval="wintermelon">Wintermelon</button>
               <a class="backBtn">Go Back</a>
             </div>
+            <!-- This is the last page (results) -->
             <div class="page page5">
               <p class="question">Almost done! You can go back and change your answers if you'd like.</p>
               <p class="green">Press submit to view your match!</p>
               
+              <!--
               <form >
                 <div class="outerForm">
                   <input type="email" name="email" placeholder="name@email.com"><br>
-                    <input type="submit" value="View Results">
+                    <input class = "results" type="submit" value="View Results">
                 </div>
               </form>
+                -->
+                <form action="/results" method ="POST" > 
+                  <button class = "results" name = "bobaStuff" type ="submit" >View Results</button>
+                </form>
+
               <a class="backBtn">Go Back</a>
             </div>
 
@@ -372,6 +379,8 @@
   <script src="js/navscroll.js"></script>
 
 
+  <!-- scripts for adding the local JSON files -->
+
   <!-- QUIZ SCRIPT -->
   <script>
     var page = 1;
@@ -380,7 +389,10 @@
     var buttons = document.querySelectorAll(".btnSelection");
     var pages = document.querySelectorAll(".page");
     var back = document.querySelectorAll(".backBtn");
+    var results = document.querySelector(".results");
 
+
+   
     // loop for adding selections to an array
     for (i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", function() {
@@ -406,19 +418,23 @@
       if (page == pages.length){
         lastPage();
       }
-      console.log(userSelections);
+
     }
 
     function lastPage() {
-      // check for all combos of drinks lol
-      // these are checking for drink combos
-      if(userSelections.includes("milk") && userSelections.includes("coffee")) {
-        // output Coffee Milk Tea image and label
-      }
-      else {
-        // check combos lol
-      }
-      console.log(pass);
+      var choiceData = JSON.stringify(userSelections);
+      console.log("we made it to the last page");
+      console.log(choiceData);
+      document.getElementsByClassName("results").value = choiceData;
+
+      var checkData = document.getElementsByClassName("results").value;
+      console.log(checkData);
+ 
+      results.addEventListener("click", function(){
+        console.log("I was clicked");
+        document.getElementsByClassName("results").value = choiceData;
+       });
+     
     }
 
     function progressBar() {
