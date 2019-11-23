@@ -1,0 +1,100 @@
+{
+	"Boba" : [
+		{
+			"Name": "Coffee Milk Tea" ,
+			"Base": "Milk",
+			"Flavor": "Coffee"
+		},
+		{
+			"Name": "Hokkaido Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Hokkaido"
+		},
+		{
+			"Name": "Honey Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Honey"
+		},
+		{
+			"Name": "Jasmine Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Jasmine"
+		},
+		{
+			"Name": "Matcha Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Matcha"
+		},
+		{
+			"Name": "Okinawa Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Okinawa"
+		},
+		{
+			"Name": "Oolong Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Oolong"
+		},
+		{
+			"Name": "Rose Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Rose"
+		},
+		{
+			"Name": "Taro Milk Tea",
+			"Base": "Milk" ,
+			"Flavor": "Taro"
+		},
+		{
+			"Name": "Thai Milk Tea",
+			"Base": "Milk",
+			"Flavor": "Thai"
+		},
+		{
+			"Name": "Wintermelon Milk Tea",
+			"Base": "Green",
+			"Flavor": "Wintermelon"
+		},
+		{
+			"Name": "Grapefruit Tea",
+			"Base": "Green",
+			"Flavor": "Grapefruit"
+		},
+		{
+			"Name": "Lychee Tea",
+			"Base": "Green",
+			"Flavor": "Lychee"
+		},
+		{
+			"Name": "Mango Tea",
+			"Base": "Green",
+			"Flavor": "Mango"
+		},
+		{
+			"Name": "Passion Fruit Tea",
+			"Base": "Green",
+			"Flavor": "Passion"
+		},
+		{
+			"Name": "Peach Tea",
+			"Base": "Green",
+			"Flavor": "Peach"
+		},
+		{
+			"Name": "Pineapple Tea",
+			"Base": "Black",
+			"Flavor": "Pineapple"
+		},
+		{
+			"Name": "Strawberry Tea",
+			"Base": "Black",
+			"Flavor": "Strawberry"
+		},
+		{
+			"Name": "Wintermelon Tea",
+			"Base": "Black",
+			"Flavor": "Wintermelon"
+		}
+	]
+}
+
