@@ -1,5 +1,5 @@
 {
-	"Kung Fu" :  { 
+	"KungFu" :  { 
         "MilkTea" : {
             "Coffee" : true,
             "Hokkaido" : false,
@@ -13,7 +13,7 @@
             "Thai" : true,
             "WinterMelon" : true
         },
-        "Fruit Tea" : {
+        "FruitTea" : {
             "Grapefruit" : true,
             "Lychee" : true,
             "Mango" : true,
@@ -25,7 +25,7 @@
         }	
     },
 
-    "Tea Son" : {
+    "TeaSon" : {
         "MilkTea" : {
             "Coffee" : false,
             "Hokkaido" : true,
@@ -39,7 +39,7 @@
             "Thai" : true,
             "WinterMelon" : true
         },
-        "Fruit Tea" : {
+        "FruitTea" : {
             "Grapefruit" : false,
             "Lychee" : false,
             "Mango" : false ,
@@ -64,7 +64,7 @@
             "Thai" :true ,
             "WinterMelon" :false
          },
-        "Fruit Tea" : {
+        "FruitTea" : {
             "Grapefruit" :false  ,
             "Lychee" : true,
             "Mango" : false ,
@@ -75,7 +75,7 @@
             "WinterMelon" :false
         }	
     },
-    "Brew Tea Bar" :  { 
+    "BrewTea" :  { 
         "MilkTea" : {
             "Coffee" : true,
             "Hokkaido" : true,
@@ -89,7 +89,7 @@
             "Thai" : true,
             "WinterMelon" : true
          },
-        "Fruit Tea" : {
+        "FruitTea" : {
             "Grapefruit" : true,
             "Lychee" : true,
             "Mango" : true,
@@ -100,7 +100,7 @@
             "WinterMelon" : true
         }	
     },
-    "7 Leaves" :  {  
+    "7Leaves" :  {  
         "MilkTea" : {
             "Coffee" :false ,
             "Hokkaido" :false ,
@@ -114,7 +114,7 @@
             "Thai" : true,
             "WinterMelon" :false
         },
-        "Fruit Tea" : {
+        "FruitTea" : {
             "Grapefruit" : false,
             "Lychee" : false,
             "Mango" :false,
@@ -126,7 +126,7 @@
         }
     },
 
-    "Tea Space" : {
+    "TeaSpace" : {
         "MilkTea" : {
             "Coffee" : true,
             "Hokkaido" : true,
@@ -140,7 +140,7 @@
             "Thai" : true,
             "WinterMelon" : true
         },
-        "Fruit Tea" : {
+        "FruitTea" : {
             "Grapefruit" : false,
             "Lychee" : true,
             "Mango" : true ,
