@@ -405,7 +405,16 @@
     function nextPage() {
       if (page < pages.length) {
         // only go to last page
-        page++;
+        if (userSelections.length <= 1) {
+          if (userSelections[0] == "milk")
+          page++;
+        else if (userSelections[0] == "green")
+          page += 2;
+        else if (userSelections[0] == "black")
+          page += 3; 
+        }
+        else
+          page = 5;
         //update progress bar
         progressBar();
       }
@@ -449,7 +458,16 @@
     }
 
     function prevPage() {
-      page--;
+      if (userSelections.length > 1) {
+        if (userSelections[0] == "milk")
+          page = 2;
+        else if (userSelections[0] == "green")
+          page = 3;
+        else if (userSelections[0] == "black")
+          page = 4; 
+        }
+        else
+          page = 1;
       //update progress bar
       progressBar();
 
