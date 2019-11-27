@@ -31,6 +31,10 @@
   
   <body id="page-top">
     <style>
+      .resultImage {
+        width: 85%;
+      }
+
       .page{
         display:none;
       }
@@ -205,14 +209,15 @@
     <!-- START nav -->
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand js-scroll-trigger" href="#page-top"><%= title %></a>
+	      <a class="navbar-brand js-scroll-trigger" href="/"><%= title %></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="/" class="nav-link js-scroll-trigger" style="color: white;">Home</a></li>
+            <li class="nav-item"><a href="/" class="nav-link js-scroll-trigger" style="color: white;">Home</a></li>
+            <li class="nav-item"><a href="/results" class="nav-link js-scroll-trigger" style="color: white;">Tí Me!</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -223,7 +228,6 @@
 		<section class="ftco-section ftco-wrap-about" id="about" style="padding: 3em !important">
 			<div class="container">
 				<div class="row">
-          <!--Quiz Questions START-->
 					<div class="col-md-8 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
             <h2>Get Matched!</h2>
             <p class="small">Complete this quiz to get matched with a Boba drink</p>
@@ -267,43 +271,36 @@
             </div>
             <!-- This is the last page (results) -->
             <div class="page page5">
-              <p class="question">Almost done! You can go back and change your answers if you'd like.</p>
-              <p class="green">Press submit to view your match!</p>
+              <p class="question" id="resultText"></p>
+              <p class="green">You may restart by pressing the button below.</p>
               
-              <!--
-              <form >
+              <form>
                 <div class="outerForm">
-                  <input type="email" name="email" placeholder="name@email.com"><br>
-                    <input class = "results" type="submit" value="View Results">
+                  <input class="submitResults" type="submit" value="Restart">
                 </div>
               </form>
-                -->
-              <form action="/results" method ="POST" > 
-                <button class = "results" name = "bobaStuff" type ="submit" >View Results</button>
-              </form>
-
-              <a class="backBtn">Go Back</a>
             </div>
 
             <div class="progress">
-
               <div id="bar"><span class="barSpan" style="width: 14.2857%"></span></div>
             </div>
           </div>
-          <!--Quiz Questions END-->
+          
           <div class="col-md-4 d-flex">
-						<div class="img img-2 ml-md-2" style="background-image: url(images/about.jpg);"></div>
-					</div>
+            <div id="resultImg" style="height:100%">
+            </div>
+          </div>
+          
 				</div>
 			</div>
     </section>
-    <!--About Section END-->
+    <!--Quiz Questions END-->
 
     <!--Footer Section START-->
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
-          <div class="col-md-6 col-lg-4">
+          <div class="col-lg-4">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Boba Tí</h2>
               <p>Our mission is to help you find your perfect taste 
@@ -312,31 +309,18 @@
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
+              </ul> 
             </div>
           </div>
-          <div class="col-md-6 col-lg-4">
+          <div class="col-lg-4">
+          </div>
+          <div class="col-lg-4">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Quick Links</h2>
               <ul class="list-unstyled">
-                <li class="nav-item"><a href="#page-top" class="nav-link js-scroll-trigger">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link js-scroll-trigger">About</a></li>
-                <li class="nav-item"><a href="#what-is-boba" class="nav-link js-scroll-trigger">What is Boba?</a></li>
-                <li class="nav-item"><a href="#how-it-works" class="nav-link js-scroll-trigger">How it works?</a></li>
+                <li class="nav-item"><a href="/" class="nav-link js-scroll-trigger">Home</a></li>
                 <li class="nav-item"><a href="/results" class="nav-link">Results</a></li>
               </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Newsletter</h2>
-            	<p>Far far away, behind the word mountains, far from the countries.</p>
-              <form action="#" class="subscribe-form">
-                <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
-                </div>
-              </form>
             </div>
           </div>
         </div>
@@ -385,13 +369,10 @@
   <script>
     var page = 1;
     var userSelections = [];
-    var pass;
     var buttons = document.querySelectorAll(".btnSelection");
     var pages = document.querySelectorAll(".page");
     var back = document.querySelectorAll(".backBtn");
-    var results = document.querySelector(".results");
-
-
+    var submitResults = document.querySelector(".submitResults");
    
     // loop for adding selections to an array
     for (i = 0; i < buttons.length; i++) {
@@ -416,6 +397,7 @@
         else
           page = 5;
         //update progress bar
+        console.log(page);
         progressBar();
       }
 
@@ -424,10 +406,94 @@
       }
 
       document.querySelector(".page" + page).classList.add("active");
+      // if on last page
       if (page == pages.length){
-        lastPage();
+        // lastpage();
+        // these are checking for drink combos
+        if (userSelections.includes("milk") && userSelections.includes("coffee")) {
+          document.getElementById("resultText").innerText = "Coffee Milk Tea";
+          printImage("coffee.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("hokkaido")) {
+          document.getElementById("resultText").innerText = "Hokkaido Milk Tea";
+          printImage("hokkaido.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("honey")) {
+          document.getElementById("resultText").innerText = "Honey Milk Tea";
+          printImage("honey.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("jasmine")) {
+          document.getElementById("resultText").innerText = "Jasmine Milk Tea";
+          printImage("jasmine.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("matcha")) {
+          document.getElementById("resultText").innerText = "Matcha Milk Tea";
+          printImage("matcha.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("okinawa")) {
+          document.getElementById("resultText").innerText = "Okinawa Milk Tea";
+          printImage("okinawa.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("oolong")) {
+          document.getElementById("resultText").innerText = "Oolong Milk Tea";
+          printImage("oolong.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("rose")) {
+          document.getElementById("resultText").innerText = "Rose Milk Tea";
+          printImage("rose.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("taro")) {
+          document.getElementById("resultText").innerText = "Taro Milk Tea";
+          printImage("taro.png");
+        }
+        else if (userSelections.includes("milk") && userSelections.includes("thai")) {
+          document.getElementById("resultText").innerText = "Thai Tea";
+          printImage("thai.png");
+        }
+        else if (userSelections.includes("green") && userSelections.includes("wintermelon")) {
+          document.getElementById("resultText").innerText = "Wintermelon Green Tea";
+          printImage("wintermelon.png");
+        }
+        else if (userSelections.includes("green") && userSelections.includes("grapefruit")) {
+          document.getElementById("resultText").innerText = "Grapefruit Green Tea";
+          printImage("grapefruit.png");
+        }
+        else if (userSelections.includes("green") && userSelections.includes("lychee")) {
+          document.getElementById("resultText").innerText = "Lychee Green Tea";
+          printImage("lychee.png");
+        }
+        else if (userSelections.includes("green") && userSelections.includes("mango")) {
+          document.getElementById("resultText").innerText = "Mango Green Tea";
+          printImage("mango.png");
+        }
+        else if (userSelections.includes("green") && userSelections.includes("passion")) {
+          document.getElementById("resultText").innerText = "Passionfruit Green Tea";
+          printImage("passion.png");
+        }
+        else if (userSelections.includes("green") && userSelections.includes("peach")) {
+          document.getElementById("resultText").innerText = "Peach Green Tea";
+          printImage("peach.png");
+        }
+        else if (userSelections.includes("black") && userSelections.includes("pineapple")) {
+          document.getElementById("resultText").innerText = "Pineapple Black Tea";
+          printImage("pineapple.png");
+        }
+        else if (userSelections.includes("black") && userSelections.includes("strawberry")) {
+          document.getElementById("resultText").innerText = "Strawberry Black Tea";
+          printImage("strawberry.png");
+        }
+        else if (userSelections.includes("black") && userSelections.includes("wintermelon")) {
+          document.getElementById("resultText").innerText = "Wintermelon Black Tea";
+          printImage("wintermelon.png");
+        }
       }
+    }
 
+    function printImage(thisImg) {
+      var img = document.createElement("IMG");
+      img.src = "images/results/" + thisImg;
+      img.className = "resultImage";
+      document.getElementById('resultImg').appendChild(img);
     }
 
     function lastPage() {
@@ -441,19 +507,10 @@
       console.log(checkData);
       */
 
-      // check for all combos of drinks lol
-      // these are checking for drink combos
-      if (userSelections.includes("milk") && userSelections.includes("coffee")) {
-        // output Coffee Milk Tea image and label
-      }
-      else if (userSelections.includes("milk") && userSelections.includes("coffee")) {
-        // check combos lol
-      }
+      submitResults.addEventListener("click", function(){
+        console.log("Result clicked");
+      });
 
-      results.addEventListener("click", function(){
-        console.log("I was clicked");
-        document.getElementsByClassName("results").value = choiceData;
-       });
     }
 
     function progressBar() {
@@ -488,8 +545,6 @@
       
       //remove last added to array
       userSelections.pop();
-      
-      console.log(userSelections);
     }
   </script>
     
