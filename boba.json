@@ -1,97 +1,97 @@
 {
 	"Boba" : [
 		{
-			"Name": "Coffee Milk Tea" ,
+			"Name": "Coffee" ,
 			"Base": "Milk",
 			"Flavor": "Coffee"
 		},
 		{
-			"Name": "Hokkaido Milk Tea",
+			"Name": "Hokkaido",
 			"Base": "Milk",
 			"Flavor": "Hokkaido"
 		},
 		{
-			"Name": "Honey Milk Tea",
+			"Name": "Honey",
 			"Base": "Milk",
 			"Flavor": "Honey"
 		},
 		{
-			"Name": "Jasmine Milk Tea",
+			"Name": "Jasmine",
 			"Base": "Milk",
 			"Flavor": "Jasmine"
 		},
 		{
-			"Name": "Matcha Milk Tea",
+			"Name": "Matcha",
 			"Base": "Milk",
 			"Flavor": "Matcha"
 		},
 		{
-			"Name": "Okinawa Milk Tea",
+			"Name": "Okinawa",
 			"Base": "Milk",
 			"Flavor": "Okinawa"
 		},
 		{
-			"Name": "Oolong Milk Tea",
+			"Name": "Oolong",
 			"Base": "Milk",
 			"Flavor": "Oolong"
 		},
 		{
-			"Name": "Rose Milk Tea",
+			"Name": "Rose",
 			"Base": "Milk",
 			"Flavor": "Rose"
 		},
 		{
-			"Name": "Taro Milk Tea",
+			"Name": "Taro",
 			"Base": "Milk" ,
 			"Flavor": "Taro"
 		},
 		{
-			"Name": "Thai Milk Tea",
+			"Name": "Thai",
 			"Base": "Milk",
 			"Flavor": "Thai"
 		},
 		{
-			"Name": "Wintermelon Milk Tea",
+			"Name": "Wintermelon",
 			"Base": "Green",
 			"Flavor": "Wintermelon"
 		},
 		{
-			"Name": "Grapefruit Tea",
+			"Name": "Grapefruit",
 			"Base": "Green",
 			"Flavor": "Grapefruit"
 		},
 		{
-			"Name": "Lychee Tea",
+			"Name": "Lychee",
 			"Base": "Green",
 			"Flavor": "Lychee"
 		},
 		{
-			"Name": "Mango Tea",
+			"Name": "Mango",
 			"Base": "Green",
 			"Flavor": "Mango"
 		},
 		{
-			"Name": "Passion Fruit Tea",
+			"Name": "Passion Fruit",
 			"Base": "Green",
 			"Flavor": "Passion"
 		},
 		{
-			"Name": "Peach Tea",
+			"Name": "Peach",
 			"Base": "Green",
 			"Flavor": "Peach"
 		},
 		{
-			"Name": "Pineapple Tea",
+			"Name": "Pineapple",
 			"Base": "Black",
 			"Flavor": "Pineapple"
 		},
 		{
-			"Name": "Strawberry Tea",
+			"Name": "Strawberry",
 			"Base": "Black",
 			"Flavor": "Strawberry"
 		},
 		{
-			"Name": "Wintermelon Tea",
+			"Name": "Wintermelon",
 			"Base": "Black",
 			"Flavor": "Wintermelon"
 		}

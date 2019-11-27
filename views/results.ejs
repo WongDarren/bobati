@@ -234,39 +234,39 @@
 
             <div class="page active base page1">
               <p class="question">Choose your base</p>
-              <button class="btnSelection mb-1" data-eval="milk">Milk</button>
-              <button class="btnSelection mb-1" data-eval="green">Green Tea</button>
-              <button class="btnSelection mb-1" data-eval="black">Black Tea</button>
+              <button class="btnSelection mb-1" data-eval="Milk">Milk</button>
+              <button class="btnSelection mb-1" data-eval="Green">Green Tea</button>
+              <button class="btnSelection mb-1" data-eval="Black">Black Tea</button>
             </div>
             <div class="page milkFlavors page2">
               <p class="question">Choose your flavor</p>
-              <button class="btnSelection mb-1" data-eval="coffee">Coffee</button>
-              <button class="btnSelection mb-1" data-eval="hokkaido">Hokkaido</button>
-              <button class="btnSelection mb-1" data-eval="honey">Honey</button>
-              <button class="btnSelection mb-1" data-eval="jasmine">Jasmine</button>
-              <button class="btnSelection mb-1" data-eval="matcha">Matcha</button>
-              <button class="btnSelection mb-1" data-eval="okinawa">Okinawa</button>
-              <button class="btnSelection mb-1" data-eval="oolong">Oolong</button>
-              <button class="btnSelection mb-1" data-eval="rose">Rose</button>
-              <button class="btnSelection mb-1" data-eval="taro">Taro</button>
-              <button class="btnSelection mb-1" data-eval="thai">Thai</button>
+              <button class="btnSelection mb-1" data-eval="Coffee">Coffee</button>
+              <button class="btnSelection mb-1" data-eval="Hokkaido">Hokkaido</button>
+              <button class="btnSelection mb-1" data-eval="Honey">Honey</button>
+              <button class="btnSelection mb-1" data-eval="Jasmine">Jasmine</button>
+              <button class="btnSelection mb-1" data-eval="Matcha">Matcha</button>
+              <button class="btnSelection mb-1" data-eval="Okinawa">Okinawa</button>
+              <button class="btnSelection mb-1" data-eval="Oolong">Oolong</button>
+              <button class="btnSelection mb-1" data-eval="Rose">Rose</button>
+              <button class="btnSelection mb-1" data-eval="Taro">Taro</button>
+              <button class="btnSelection mb-1" data-eval="Thai">Thai</button>
               <a class="backBtn">Go Back</a>
             </div>
             <div class="page greenFlavors page3">
               <p class="question">Choose your flavor</p>
-              <button class="btnSelection mb-1" data-eval="wintermelon">Wintermelon</button>
-              <button class="btnSelection mb-1" data-eval="grapefruit">Grapefruit</button>
-              <button class="btnSelection mb-1" data-eval="lychee">Lychee</button>
-              <button class="btnSelection mb-1" data-eval="mango">Mango</button>
-              <button class="btnSelection mb-1" data-eval="passion">Passionfruit</button>
-              <button class="btnSelection mb-1" data-eval="peach">Peach</button>
+              <button class="btnSelection mb-1" data-eval="Wintermelon">Wintermelon</button>
+              <button class="btnSelection mb-1" data-eval="Grapefruit">Grapefruit</button>
+              <button class="btnSelection mb-1" data-eval="Lychee">Lychee</button>
+              <button class="btnSelection mb-1" data-eval="Mango">Mango</button>
+              <button class="btnSelection mb-1" data-eval="Passion">Passionfruit</button>
+              <button class="btnSelection mb-1" data-eval="Peach">Peach</button>
               <a class="backBtn">Go Back</a>
             </div>
             <div class="page blackFlavors page4">
               <p class="question">Choose your flavor</p>
-              <button class="btnSelection mb-1" data-eval="pineapple">Pineapple</button>
-              <button class="btnSelection mb-1" data-eval="strawberry">Strawberry</button>
-              <button class="btnSelection mb-1" data-eval="wintermelon">Wintermelon</button>
+              <button class="btnSelection mb-1" data-eval="Pineapple">Pineapple</button>
+              <button class="btnSelection mb-1" data-eval="Strawberry">Strawberry</button>
+              <button class="btnSelection mb-1" data-eval="Wintermelon">Wintermelon</button>
               <a class="backBtn">Go Back</a>
             </div>
             <!-- This is the last page (results) -->
@@ -387,11 +387,11 @@
       if (page < pages.length) {
         // only go to last page
         if (userSelections.length <= 1) {
-          if (userSelections[0] == "milk")
+          if (userSelections[0] == "Milk")
           page++;
-        else if (userSelections[0] == "green")
+        else if (userSelections[0] == "Green")
           page += 2;
-        else if (userSelections[0] == "black")
+        else if (userSelections[0] == "Black")
           page += 3; 
         }
         else
@@ -408,81 +408,86 @@
       document.querySelector(".page" + page).classList.add("active");
       // if on last page
       if (page == pages.length){
+        var selections = JSON.stringify(userSelections);
+        console.log(selections);
+        //communicate results to the backend. 
+        $.post('/results', {results: selections});
+
         // lastpage();
         // these are checking for drink combos
-        if (userSelections.includes("milk") && userSelections.includes("coffee")) {
+        if (userSelections.includes("Milk") && userSelections.includes("Coffee")) {
           document.getElementById("resultText").innerText = "Coffee Milk Tea";
           printImage("coffee.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("hokkaido")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Hokkaido")) {
           document.getElementById("resultText").innerText = "Hokkaido Milk Tea";
           printImage("hokkaido.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("honey")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Honey")) {
           document.getElementById("resultText").innerText = "Honey Milk Tea";
           printImage("honey.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("jasmine")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Jasmine")) {
           document.getElementById("resultText").innerText = "Jasmine Milk Tea";
           printImage("jasmine.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("matcha")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Matcha")) {
           document.getElementById("resultText").innerText = "Matcha Milk Tea";
           printImage("matcha.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("okinawa")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Okinawa")) {
           document.getElementById("resultText").innerText = "Okinawa Milk Tea";
           printImage("okinawa.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("oolong")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Oolong")) {
           document.getElementById("resultText").innerText = "Oolong Milk Tea";
           printImage("oolong.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("rose")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Rose")) {
           document.getElementById("resultText").innerText = "Rose Milk Tea";
           printImage("rose.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("taro")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Taro")) {
           document.getElementById("resultText").innerText = "Taro Milk Tea";
           printImage("taro.png");
         }
-        else if (userSelections.includes("milk") && userSelections.includes("thai")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Thai")) {
           document.getElementById("resultText").innerText = "Thai Tea";
           printImage("thai.png");
         }
-        else if (userSelections.includes("green") && userSelections.includes("wintermelon")) {
+        else if (userSelections.includes("Green") && userSelections.includes("Wintermelon")) {
           document.getElementById("resultText").innerText = "Wintermelon Green Tea";
           printImage("wintermelon.png");
         }
-        else if (userSelections.includes("green") && userSelections.includes("grapefruit")) {
+        else if (userSelections.includes("Green") && userSelections.includes("Grapefruit")) {
           document.getElementById("resultText").innerText = "Grapefruit Green Tea";
           printImage("grapefruit.png");
         }
-        else if (userSelections.includes("green") && userSelections.includes("lychee")) {
+        else if (userSelections.includes("Green") && userSelections.includes("Lychee")) {
           document.getElementById("resultText").innerText = "Lychee Green Tea";
           printImage("lychee.png");
         }
-        else if (userSelections.includes("green") && userSelections.includes("mango")) {
+        else if (userSelections.includes("Green") && userSelections.includes("Mango")) {
           document.getElementById("resultText").innerText = "Mango Green Tea";
           printImage("mango.png");
         }
-        else if (userSelections.includes("green") && userSelections.includes("passion")) {
+        else if (userSelections.includes("Green") && userSelections.includes("Passion")) {
           document.getElementById("resultText").innerText = "Passionfruit Green Tea";
           printImage("passion.png");
         }
-        else if (userSelections.includes("green") && userSelections.includes("peach")) {
+        else if (userSelections.includes("Green") && userSelections.includes("Peach")) {
           document.getElementById("resultText").innerText = "Peach Green Tea";
           printImage("peach.png");
         }
-        else if (userSelections.includes("black") && userSelections.includes("pineapple")) {
+        else if (userSelections.includes("Black") && userSelections.includes("Pineapple")) {
           document.getElementById("resultText").innerText = "Pineapple Black Tea";
           printImage("pineapple.png");
         }
-        else if (userSelections.includes("black") && userSelections.includes("strawberry")) {
+        else if (userSelections.includes("Black") && userSelections.includes("Strawberry")) {
           document.getElementById("resultText").innerText = "Strawberry Black Tea";
           printImage("strawberry.png");
         }
-        else if (userSelections.includes("black") && userSelections.includes("wintermelon")) {
+        else if (userSelections.includes("Black") && userSelections.includes("Wintermelon")) {
           document.getElementById("resultText").innerText = "Wintermelon Black Tea";
           printImage("wintermelon.png");
         }
@@ -526,11 +531,11 @@
 
     function prevPage() {
       if (userSelections.length > 1) {
-        if (userSelections[0] == "milk")
+        if (userSelections[0] == "Milk")
           page = 2;
-        else if (userSelections[0] == "green")
+        else if (userSelections[0] == "Green")
           page = 3;
-        else if (userSelections[0] == "black")
+        else if (userSelections[0] == "Black")
           page = 4; 
         }
         else
