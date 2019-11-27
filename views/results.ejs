@@ -278,9 +278,9 @@
                 </div>
               </form>
                 -->
-                <form action="/results" method ="POST" > 
-                  <button class = "results" name = "bobaStuff" type ="submit" >View Results</button>
-                </form>
+              <form action="/results" method ="POST" > 
+                <button class = "results" name = "bobaStuff" type ="submit" >View Results</button>
+              </form>
 
               <a class="backBtn">Go Back</a>
             </div>
@@ -431,6 +431,7 @@
     }
 
     function lastPage() {
+      /*
       var choiceData = JSON.stringify(userSelections);
       console.log("we made it to the last page");
       console.log(choiceData);
@@ -438,12 +439,21 @@
 
       var checkData = document.getElementsByClassName("results").value;
       console.log(checkData);
- 
+      */
+
+      // check for all combos of drinks lol
+      // these are checking for drink combos
+      if (userSelections.includes("milk") && userSelections.includes("coffee")) {
+        // output Coffee Milk Tea image and label
+      }
+      else if (userSelections.includes("milk") && userSelections.includes("coffee")) {
+        // check combos lol
+      }
+
       results.addEventListener("click", function(){
         console.log("I was clicked");
         document.getElementsByClassName("results").value = choiceData;
        });
-     
     }
 
     function progressBar() {

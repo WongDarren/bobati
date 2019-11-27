@@ -16,15 +16,12 @@ console.log(boba.Boba[1].Name); //This is how to get the boba drinks
 console.log(store.KungFu.MilkTea); //thius is how to get the store info
 /* GET results page */
 router.get('/', function(req, res, next) {
-
-  
   console.log("Lets check if this works");
   res.render('results', { title: 'Boba Tí', boba: 'boba', store: 'store' });
 
 });
 
 router.post('/', function(req,res){
-
   console.log("Did we ever get into the post request");
   //console.log(req);
   console.log(req.body);
