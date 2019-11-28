@@ -9,8 +9,8 @@ var store = require('../stores.json');
 //console.log(boba.Boba.length); //get the length of the array 
 
 
-console.log(boba.Boba[1].Name); // this is how to get the boba drinks;
-console.log(store.stores[0]); //this is how to get the store info 
+//console.log(boba.Boba[1].Name); // this is how to get the boba drinks;
+//console.log(store.stores[0]); //this is how to get the store info 
 
 /* GET results page */
 router.get('/', function(req, res, next) {
@@ -36,8 +36,6 @@ router.post('/', function(req,res){
     if(boba.Boba[i].Base == selection[0] && boba.Boba[i].Flavor == selection[1])
     {
       bobaName = boba.Boba[i].Name;
-      console.log("the name of the boba is");
-      //bobaName = JSON.stringify(bobaName); 
       console.log(bobaName);
     }
   }
@@ -73,9 +71,19 @@ router.post('/', function(req,res){
 
   }
 
-  console.log(foundStores); // check if the foundStores array was filled
+  console.log("Boba is found at " + foundStores); // check if the foundStores array was filled
+  //var firstStore = foundStores[0];
+  //console.log(firstStore);
+  console.log(foundStores);
+  //foundStores = JSON.stringify(foundStores);
+  //console.log(foundStores);
 
+  const data = {
+    "number": "2",
+    "number2" : "4"
+  };
 
+  res.render('yelp', {foundStores: foundStores});
 });
 
 module.exports = router;

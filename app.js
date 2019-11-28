@@ -12,6 +12,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var resultsRouter = require('./routes/results');
+var yelpRouter = require('./routes/yelp')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //This is where all the pages will actually declared, using '/[pagename]' here
 app.use('/', indexRouter);
 app.use('/results', resultsRouter);
+app.use('/yelp', yelpRouter);
 
 
 
