@@ -232,45 +232,47 @@
             <h2>Get Matched!</h2>
             <p class="small">Complete this quiz to get matched with a Boba drink</p>
 
-            <div class="page active base page1">
-              <p class="question">Choose your base</p>
+            <div class="page active page1">
+              <p class="question">Page1</p>
               <button class="btnSelection mb-1" data-eval="Milk">Milk</button>
+              <button class="btnSelection mb-1" data-eval="Fruit">Fruit</button>
+            </div>
+            <div class="page page2">
+              <p class="question">Page2</p>
+              <button class="btnSelection mb-1" data-eval="Bitter">Bitter</button>
+              <button class="btnSelection mb-1" data-eval="Sweet">Sweet</button>
+              <a class="backBtn">Go Back</a>
+            </div>
+            <div class="page page3">
+              <p class="question">Page3</p>
               <button class="btnSelection mb-1" data-eval="Green">Green Tea</button>
               <button class="btnSelection mb-1" data-eval="Black">Black Tea</button>
-            </div>
-            <div class="page milkFlavors page2">
-              <p class="question">Choose your flavor</p>
-              <button class="btnSelection mb-1" data-eval="Coffee">Coffee</button>
-              <button class="btnSelection mb-1" data-eval="Hokkaido">Hokkaido</button>
-              <button class="btnSelection mb-1" data-eval="Honey">Honey</button>
-              <button class="btnSelection mb-1" data-eval="Jasmine">Jasmine</button>
-              <button class="btnSelection mb-1" data-eval="Matcha">Matcha</button>
-              <button class="btnSelection mb-1" data-eval="Okinawa">Okinawa</button>
-              <button class="btnSelection mb-1" data-eval="Oolong">Oolong</button>
-              <button class="btnSelection mb-1" data-eval="Rose">Rose</button>
-              <button class="btnSelection mb-1" data-eval="Taro">Taro</button>
-              <button class="btnSelection mb-1" data-eval="Thai">Thai</button>
               <a class="backBtn">Go Back</a>
             </div>
-            <div class="page greenFlavors page3">
-              <p class="question">Choose your flavor</p>
-              <button class="btnSelection mb-1" data-eval="Wintermelon">Wintermelon</button>
-              <button class="btnSelection mb-1" data-eval="Grapefruit">Grapefruit</button>
-              <button class="btnSelection mb-1" data-eval="Lychee">Lychee</button>
-              <button class="btnSelection mb-1" data-eval="Mango">Mango</button>
-              <button class="btnSelection mb-1" data-eval="Passion">Passionfruit</button>
-              <button class="btnSelection mb-1" data-eval="Peach">Peach</button>
+            <div class="page page4">
+              <p class="question">Page4</p>
+              <button class="btnSelection mb-1" data-eval="Sweet">Sweet</button>
+              <button class="btnSelection mb-1" data-eval="Sour">Sour</button>
+              <button class="btnSelection mb-1" data-eval="Tart">Tart</button>
               <a class="backBtn">Go Back</a>
             </div>
-            <div class="page blackFlavors page4">
-              <p class="question">Choose your flavor</p>
-              <button class="btnSelection mb-1" data-eval="Pineapple">Pineapple</button>
-              <button class="btnSelection mb-1" data-eval="Strawberry">Strawberry</button>
-              <button class="btnSelection mb-1" data-eval="Wintermelon">Wintermelon</button>
+            <div class="page page5">
+              <p class="question">Page5</p>
+              <button class="btnSelection mb-1" data-eval="Mild">Mild</button>
+              <button class="btnSelection mb-1" data-eval="Regular">Regular</button>
+              <button class="btnSelection mb-1" data-eval="Very">Very</button>
+              <a class="backBtn">Go Back</a>
+            </div>
+            <div class="page page6">
+              <p class="question">Page6</p>
+              <button class="btnSelection mb-1" data-eval="Fruity">Fruity</button>
+              <button class="btnSelection mb-1" data-eval="Earthy">Earthy</button>
+              <button class="btnSelection mb-1" data-eval="Milky">Milky</button>
+              <button class="btnSelection mb-1" data-eval="Floral">Floral</button>
               <a class="backBtn">Go Back</a>
             </div>
             <!-- This is the last page (results) -->
-            <div class="page page5">
+            <div class="page page7">
               <p class="question" id="resultText"></p>
               <p class="green">You may restart by pressing the button below.</p>
               
@@ -395,16 +397,30 @@
     function nextPage() {
       if (page < pages.length) {
         // only go to last page
-        if (userSelections.length <= 1) {
+        if (userSelections.length == 1) {
           if (userSelections[0] == "Milk")
-          page++;
-        else if (userSelections[0] == "Green")
-          page += 2;
-        else if (userSelections[0] == "Black")
-          page += 3; 
+            page = 2;
+          else if (userSelections[0] == "Fruit")
+            page = 3;
         }
-        else
-          page = 5;
+        else if (userSelections.length == 2) {
+          if (userSelections[1] == "Bitter" || userSelections[1] == "Sweet")
+            page = 5;
+          else if (userSelections[1] == "Green" || userSelections[1] == "Black")
+            page = 4;
+        }
+        else if (userSelections.length == 3) {
+          if (userSelections[2] == "Mild" || userSelections[2] == "Regular" || userSelections[2] == "Very")
+            page = 6;
+          else if (userSelections[2] == "Sweet" || userSelections[2] == "Sour" || userSelections[2] == "Tart")
+            page = 5;
+        }
+        else if (userSelections.length == 4) {
+          if (userSelections[3] == "Fruity" || userSelections[3] == "Earthy" || userSelections[3] == "Milky" || userSelections[3] == "Floral")
+            page = 7;
+          else (userSelections[3] == "Mild" || userSelections[3] == "Regular" || userSelections[3] == "Very")
+            page = 7;
+        }
         //update progress bar
         console.log(page);
         progressBar();
@@ -417,12 +433,6 @@
       document.querySelector(".page" + page).classList.add("active");
       // if on last page
       if (page == pages.length){
-        
-        //console.log(selections);
-        //communicate results to the backend. 
-        //
-        // lastpage();
-        // these are checking for drink combos
 
         if (userSelections.includes("Milk") && userSelections.includes("Coffee")) {
           document.getElementById("resultText").innerText = "Coffee Milk Tea";
@@ -511,20 +521,9 @@
     }
 
     function lastPage() {
-      /*
-      var choiceData = JSON.stringify(userSelections);
-      console.log("we made it to the last page");
-      console.log(choiceData);
-      document.getElementsByClassName("results").value = choiceData;
-
-      var checkData = document.getElementsByClassName("results").value;
-      console.log(checkData);
-      */
-
       submitResults.addEventListener("click", function(){
         console.log("Result clicked");
       });
-
     }
 
     function progressBar() {
@@ -539,16 +538,21 @@
     }
 
     function prevPage() {
-      if (userSelections.length > 1) {
-        if (userSelections[0] == "Milk")
+      if (userSelections.length == 1 && (userSelections[0] == "Milk" || userSelections[0] == "Fruit")) {
+        page = 1;
+      }
+      else if (userSelections.length == 2) {
+        if (userSelections[1] == "Bitter" || userSelections[1] == "Sweet")
           page = 2;
-        else if (userSelections[0] == "Green")
-          page = 3;
-        else if (userSelections[0] == "Black")
-          page = 4; 
-        }
         else
-          page = 1;
+          page = 3;  
+      }
+      else if (userSelections.length == 3) {
+        if (userSelections[2] == "Mild" || userSelections[2] == "Regular" || userSelections[2] == "Very")
+          page = 5;
+        else if (userSelections[2] == "Sweet" || userSelections[2] == "Sour" || userSelections[2] == "Tart")
+          page = 4;
+      }
       //update progress bar
       progressBar();
 
