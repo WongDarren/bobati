@@ -433,24 +433,29 @@
       document.querySelector(".page" + page).classList.add("active");
       // if on last page
       if (page == pages.length){
-
-        if (userSelections.includes("Milk") && userSelections.includes("Coffee")) {
+        // MILD BITTER
+        if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Earthy")) {
+          document.getElementById("resultText").innerText = "Matcha Milk Tea";
+          printImage("matcha.png");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Milky")) {
           document.getElementById("resultText").innerText = "Coffee Milk Tea";
           printImage("coffee.png");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Hokkaido")) {
-          document.getElementById("resultText").innerText = "Hokkaido Milk Tea";
-          printImage("hokkaido.png");
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Floral")) {
+          document.getElementById("resultText").innerText = "Oolong Milk Tea";
+          printImage("Oolong.png");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Honey")) {
-          document.getElementById("resultText").innerText = "Honey Milk Tea";
-          printImage("honey.png");
-        }
+        // REGULAR BITTER
         else if (userSelections.includes("Milk") && userSelections.includes("Jasmine")) {
           document.getElementById("resultText").innerText = "Jasmine Milk Tea";
           printImage("jasmine.png");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Matcha")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Earthy")) {
+          document.getElementById("resultText").innerText = "Matcha Milk Tea";
+          printImage("matcha.png");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Earthy")) {
           document.getElementById("resultText").innerText = "Matcha Milk Tea";
           printImage("matcha.png");
         }
@@ -458,7 +463,7 @@
           document.getElementById("resultText").innerText = "Okinawa Milk Tea";
           printImage("okinawa.png");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Oolong")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Floral")) {
           document.getElementById("resultText").innerText = "Oolong Milk Tea";
           printImage("oolong.png");
         }
