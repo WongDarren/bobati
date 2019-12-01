@@ -98,7 +98,11 @@
       p.question{
         font-size:35px;
         font-weight:300;
-        margin-bottom:30px;
+        margin-bottom:10px;
+      }
+      p.desc{
+        font-size:14px;
+        margin-bottom:10px;
       }
       p.green{
         color:#5FB429;
@@ -233,47 +237,56 @@
             <p class="small">Complete this quiz to get matched with a Boba drink</p>
 
             <div class="page active page1">
-              <p class="question">Page1</p>
+              <p class="question">Choose your Base</p>
               <button class="btnSelection mb-1" data-eval="Milk">Milk</button>
               <button class="btnSelection mb-1" data-eval="Fruit">Fruit</button>
             </div>
             <div class="page page2">
-              <p class="question">Page2</p>
+              <p class="question">How are you feeling?</p>
               <button class="btnSelection mb-1" data-eval="Bitter">Bitter</button>
               <button class="btnSelection mb-1" data-eval="Sweet">Sweet</button>
               <a class="backBtn">Go Back</a>
             </div>
             <div class="page page3">
-              <p class="question">Page3</p>
+              <p class="question">What type of tea base would you like?</p>
               <button class="btnSelection mb-1" data-eval="Green">Green Tea</button>
               <button class="btnSelection mb-1" data-eval="Black">Black Tea</button>
               <a class="backBtn">Go Back</a>
             </div>
             <div class="page page4">
-              <p class="question">Page4</p>
+              <p class="question">How are you feeling?</p>
               <button class="btnSelection mb-1" data-eval="Sweet">Sweet</button>
               <button class="btnSelection mb-1" data-eval="Sour">Sour</button>
               <button class="btnSelection mb-1" data-eval="Tart">Tart</button>
               <a class="backBtn">Go Back</a>
             </div>
             <div class="page page5">
-              <p class="question">Page5</p>
+              <p class="question">Be specific!</p>
               <button class="btnSelection mb-1" data-eval="Mild">Mild</button>
-              <button class="btnSelection mb-1" data-eval="Regular">Regular</button>
+              <button class="btnSelection mb-1" data-eval="Reg">Regular</button>
               <button class="btnSelection mb-1" data-eval="Very">Very</button>
               <a class="backBtn">Go Back</a>
             </div>
             <div class="page page6">
-              <p class="question">Page6</p>
+              <p class="question">What about these flavor profiles?</p>
               <button class="btnSelection mb-1" data-eval="Fruity">Fruity</button>
               <button class="btnSelection mb-1" data-eval="Earthy">Earthy</button>
               <button class="btnSelection mb-1" data-eval="Milky">Milky</button>
               <button class="btnSelection mb-1" data-eval="Floral">Floral</button>
               <a class="backBtn">Go Back</a>
             </div>
-            <!-- This is the last page (results) -->
             <div class="page page7">
+              <p class="question">What about these flavor profiles?</p> <!-- This is for the bitter choice -->
+              <button class="btnSelection mb-1" data-eval="Earthy">Earthy</button>
+              <button class="btnSelection mb-1" data-eval="Milky">Milky</button>
+              <button class="btnSelection mb-1" data-eval="Floral">Floral</button>
+              <a class="backBtn">Go Back</a>
+            </div>
+            <!-- This is the last page (results) -->
+            <div class="page page8">
               <p class="question" id="resultText"></p>
+              <p id="description" class = "desc"> </p>
+              <br>
               <p class="green">You may restart by pressing the button below.</p>
               
               <form>
@@ -410,16 +423,18 @@
             page = 4;
         }
         else if (userSelections.length == 3) {
-          if (userSelections[2] == "Mild" || userSelections[2] == "Regular" || userSelections[2] == "Very")
+          if ((userSelections[2] == "Mild" || userSelections[2] == "Reg" || userSelections[2] == "Very") && userSelections[1] == "Bitter")
+            page = 7;
+          else if (userSelections[2] == "Mild" || userSelections[2] == "Reg" || userSelections[2] == "Very")
             page = 6;
           else if (userSelections[2] == "Sweet" || userSelections[2] == "Sour" || userSelections[2] == "Tart")
             page = 5;
         }
         else if (userSelections.length == 4) {
           if (userSelections[3] == "Fruity" || userSelections[3] == "Earthy" || userSelections[3] == "Milky" || userSelections[3] == "Floral")
-            page = 7;
-          else (userSelections[3] == "Mild" || userSelections[3] == "Regular" || userSelections[3] == "Very")
-            page = 7;
+            page = 8;
+          else (userSelections[3] == "Mild" || userSelections[3] == "Reg" || userSelections[3] == "Very")
+            page = 8;
         }
         //update progress bar
         console.log(page);
@@ -437,85 +452,235 @@
         if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Earthy")) {
           document.getElementById("resultText").innerText = "Matcha Milk Tea";
           printImage("matcha.png");
+          printDescription("Matcha Milk Tea is a refreshing beverage made with matcha powder and your choice of milk and sweetener. ");
         }
         else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Milky")) {
           document.getElementById("resultText").innerText = "Coffee Milk Tea";
           printImage("coffee.png");
+          printDescription("Coffee Milk Tea is half coffee, half black tea, milk (milk, heavy cream, or condensed milk) and sweetener.")
         }
         else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Floral")) {
           document.getElementById("resultText").innerText = "Oolong Milk Tea";
           printImage("Oolong.png");
+          printDescription("Oolong Milk tea is a Taiwanese tea known for its creamy and buttery taste. Oolong Milk tea provides a sweet flowery scent and a taste of sweet butter and milk through gently roasted and rolled tea leaves. ");
         }
         // REGULAR BITTER
-        else if (userSelections.includes("Milk") && userSelections.includes("Jasmine")) {
+     
+        if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Reg") && userSelections.includes("Earthy")) {
+          document.getElementById("resultText").innerText = "Matcha Milk Tea";
+          printImage("matcha.png");
+          printDescription("Matcha Milk Tea is a refreshing beverage made with matcha powder and your choice of milk and sweetener. ");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Reg") && userSelections.includes("Milky")) {
+          document.getElementById("resultText").innerText = "Coffee Milk Tea";
+          printImage("coffee.png");
+          printDescription("Coffee Milk Tea is half coffee, half black tea, milk (milk, heavy cream, or condensed milk) and sweetener. ");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Reg") && userSelections.includes("Floral")) {
+          document.getElementById("resultText").innerText = "Oolong Milk Tea";
+          printImage("Oolong.png");
+          printDescription("Oolong Milk tea is a Taiwanese tea known for its creamy and buttery taste. Oolong Milk tea provides a sweet flowery scent and a taste of sweet butter and milk through gently roasted and rolled tea leaves. ");
+        }
+
+        // VERY BITTER
+        if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Very") && userSelections.includes("Earthy")) {
+          document.getElementById("resultText").innerText = "Matcha Milk Tea";
+          printImage("matcha.png");
+          printDescription("Matcha Milk Tea is a refreshing beverage made with matcha powder and your choice of milk and sweetener. ");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Very") && userSelections.includes("Milky")) {
+          document.getElementById("resultText").innerText = "Coffee Milk Tea";
+          printImage("coffee.png");
+          printDescription("Coffee Milk Tea is half coffee, half black tea, milk (milk, heavy cream, or condensed milk) and sweetener. ");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Very") && userSelections.includes("Floral")) {
+          document.getElementById("resultText").innerText = "Oolong Milk Tea";
+          printImage("Oolong.png");
+          printDescription("Oolong Milk tea is a Taiwanese tea known for its creamy and buttery taste. Oolong Milk tea provides a sweet flowery scent and a taste of sweet butter and milk through gently roasted and rolled tea leaves. ");
+        }
+
+        // MILD SWEET 
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Mild") && userSelections.includes ("Floral") && userSelections.includes ("Jasmine")) {
           document.getElementById("resultText").innerText = "Jasmine Milk Tea";
           printImage("jasmine.png");
+          printDescription("A pure, sweet and yet intense milk tea. The scent of pure jasmine blends in well with that of tea and milk. Accented with the warmth of raw sugar and the overall olfactory experience is pure, soothing, and sweetly memorable. ");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Earthy")) {
-          document.getElementById("resultText").innerText = "Matcha Milk Tea";
-          printImage("matcha.png");
-        }
-        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Earthy")) {
-          document.getElementById("resultText").innerText = "Matcha Milk Tea";
-          printImage("matcha.png");
-        }
-        else if (userSelections.includes("Milk") && userSelections.includes("Okinawa")) {
+
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Mild") && userSelections.includes ("Milky")) {
           document.getElementById("resultText").innerText = "Okinawa Milk Tea";
           printImage("okinawa.png");
+          printDescription("The Okinawa is essentially milk tea made with roasted brown sugar instead of regular syrup, giving it a distinct flavor and adding a layer of complexity to the traditional drink.");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Bitter") && userSelections.includes("Mild") && userSelections.includes("Floral")) {
-          document.getElementById("resultText").innerText = "Oolong Milk Tea";
-          printImage("oolong.png");
-        }
-        else if (userSelections.includes("Milk") && userSelections.includes("Rose")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Mild") && userSelections.includes ("Floral") && userSelections.includes ("Rose")) {
           document.getElementById("resultText").innerText = "Rose Milk Tea";
           printImage("rose.png");
+          printDescription("Rose milk tea is a delicious combination of black tea infused with floral, aromatic rose syrup and a splash of warm milk.");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Taro")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Mild") && userSelections.includes ("Earthy")) {
           document.getElementById("resultText").innerText = "Taro Milk Tea";
           printImage("taro.png");
+          printDescription("Fresh Taro Root Cooked with Loose-Leaf Jasmine Tea");
         }
-        else if (userSelections.includes("Milk") && userSelections.includes("Thai")) {
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Mild") && userSelections.includes ("Fruity")) {
+          document.getElementById("resultText").innerText = "Wintermelon Milk Tea";
+          printImage("wintermelon.png");
+          printDescription("Wintermelon is a sweet melon that is native to Japan. It's sweet and makes a fantastic flavoring to creamy milk tea. ");
+        }
+
+        // REGULAR SWEET
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Reg") && userSelections.includes ("Fruity")) {
+          document.getElementById("resultText").innerText = "Wintermelon Milk Tea";
+          printImage("wintermelon.png");
+          printDescription("Wintermelon is a sweet melon that is native to Japan. It's sweet and makes a fantastic flavoring to creamy milk tea. ");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Reg") && userSelections.includes ("Earthy")) {
+          document.getElementById("resultText").innerText = "Taro Milk Tea";
+          printImage("taro.png");
+          printDescription("Fresh Taro Root Cooked with Loose-Leaf Jasmine Tea");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Reg") && userSelections.includes ("Milky")) {
+          document.getElementById("resultText").innerText = "Hokkaido Milk Tea";
+          printImage("hokkaido.png");
+          printDescription("Hokkaido milk tea is made of black tea leaves with milk — traditionally from fresh milk produced in the Hokkaido province. The tea is made using high-quality black tea leaves including Assam, Darjeeling, and Earl Grey varieties. The tea is often sweetened with caramel syrup or brown sugar.");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Reg") && userSelections.includes ("Floral")) {
+          document.getElementById("resultText").innerText = "Honey Milk Tea";
+          printImage("honey.png");
+          printDescription("Honey flavored milk tea has a creamy and sweet taste.");
+        }
+
+        // VERY SWEET
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Very") && userSelections.includes ("Fruity")) {
+          document.getElementById("resultText").innerText = "Wintermelon Milk Tea";
+          printImage("wintermelon.png");
+          printDescription("Wintermelon is a sweet melon that is native to Japan. It's sweet and makes a fantastic flavoring to creamy milk tea. ");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Very") && userSelections.includes ("Earthy")) {
+          document.getElementById("resultText").innerText = "Taro Milk Tea";
+          printImage("taro.png");
+          printDescription("Fresh Taro Root Cooked with Loose-Leaf Jasmine Tea");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Very") && userSelections.includes ("Milky")) {
+          document.getElementById("resultText").innerText = "Hokkaido Milk Tea";
+          printImage("hokkaido.png");
+          printDescription("Hokkaido milk tea is made of black tea leaves with milk — traditionally from fresh milk produced in the Hokkaido province. The tea is made using high-quality black tea leaves including Assam, Darjeeling, and Earl Grey varieties. The tea is often sweetened with caramel syrup or brown sugar.");
+        }
+        else if (userSelections.includes("Milk") && userSelections.includes("Sweet") && userSelections.includes ("Very") && userSelections.includes ("Floral")) {
           document.getElementById("resultText").innerText = "Thai Tea";
           printImage("thai.png");
+          printDescription("Thai Tea is made from strongly-brewed black tea, often spiced with ingredients such as star anise, crushed tamarind, cardamom, and occasionally others as well. This brew is then sweetened with sugar and sweetened condensed milk, and served over ice.");
         }
-        else if (userSelections.includes("Green") && userSelections.includes("Wintermelon")) {
-          document.getElementById("resultText").innerText = "Wintermelon Green Tea";
-          printImage("wintermelon.png");
-        }
-        else if (userSelections.includes("Green") && userSelections.includes("Grapefruit")) {
-          document.getElementById("resultText").innerText = "Grapefruit Green Tea";
+
+        //--------FRUIT TEAS-------------
+        //-------Black---------
+        //SOUR
+
+        else if (userSelections.includes("Sour") && userSelections.includes("Very") && userSelections.includes("Black")) {
+          document.getElementById("resultText").innerText = "Grapefruit Black Tea";
           printImage("grapefruit.png");
+          printDescription("A cold refreshing tea with a sour zing of grapefruit syrup added to green tea or black tea base.");
         }
-        else if (userSelections.includes("Green") && userSelections.includes("Lychee")) {
-          document.getElementById("resultText").innerText = "Lychee Green Tea";
-          printImage("lychee.png");
-        }
-        else if (userSelections.includes("Green") && userSelections.includes("Mango")) {
-          document.getElementById("resultText").innerText = "Mango Green Tea";
-          printImage("mango.png");
-        }
-        else if (userSelections.includes("Green") && userSelections.includes("Passion")) {
-          document.getElementById("resultText").innerText = "Passionfruit Green Tea";
+        else if (userSelections.includes("Sour") && userSelections.includes("Mild")&& userSelections.includes("Black")) {
+          document.getElementById("resultText").innerText = "Passionfruit Black Tea";
           printImage("passion.png");
+          printDescription("Passion Fruit tea is slightly tart with a tropical tang that is offset perfectly by the creamy sweet tea. Can be combined with either green tea or black tea.");
         }
-        else if (userSelections.includes("Green") && userSelections.includes("Peach")) {
-          document.getElementById("resultText").innerText = "Peach Green Tea";
-          printImage("peach.png");
-        }
-        else if (userSelections.includes("Black") && userSelections.includes("Pineapple")) {
+
+        else if (userSelections.includes("Sour") && userSelections.includes("Reg")&& userSelections.includes("Black")) {
           document.getElementById("resultText").innerText = "Pineapple Black Tea";
           printImage("pineapple.png");
+          printDescription("Pineapple Boba Tea can be prepared as either a Black Tea or Green Tea. Either choice is mixed with Pineapple syrup to give it a more refreshing sour taste.");
         }
-        else if (userSelections.includes("Black") && userSelections.includes("Strawberry")) {
+
+        //SWEET
+        else if (userSelections.includes("Sweet") && userSelections.includes("Very")&& userSelections.includes("Black")) {
+          document.getElementById("resultText").innerText = "Lychee Black Tea";
+          printImage("lychee.png");
+          printDescription("A refreshing sweet drink with a taste of green tea or black tea, added by the sweetness of lychee syrup");
+        }
+        else if ((userSelections.includes("Sweet") && userSelections.includes("Reg")&& userSelections.includes("Black")) || (userSelections.includes("Sweet") && userSelections.includes("Mild")&& userSelections.includes("Black"))) {
+          document.getElementById("resultText").innerText = "Peach Black Tea";
+          printImage("peach.png");
+          printDescription("Peach Tea is very light, refreshing, and fruity. The black tea or green tea is actually quite hidden in this drink.");
+        }
+
+        //TART
+        else if (userSelections.includes("Tart") && userSelections.includes("Mild")&& userSelections.includes("Black")) {
+          document.getElementById("resultText").innerText = "Mango Black Tea";
+          printImage("mango.png");
+          printDescription("Mango tea is very tart with a tropical tang that is offset perfectly by green tea or black tea.");
+        }
+
+        else if (userSelections.includes("Tart") && userSelections.includes("Reg")&& userSelections.includes("Black")) {
           document.getElementById("resultText").innerText = "Strawberry Black Tea";
           printImage("strawberry.png");
+          printDescription("Strawberry Boba Tea can be prepared as either a Black Tea or Green Tea. Either choice is mixed with a Strawberry syrup to give it a more refreshing taste.");
         }
-        else if (userSelections.includes("Black") && userSelections.includes("Wintermelon")) {
+        else if (userSelections.includes("Tart") && userSelections.includes("Very")&& userSelections.includes("Black")) {
           document.getElementById("resultText").innerText = "Wintermelon Black Tea";
           printImage("wintermelon.png");
+          printDescription("A refreshing drink with a taste of green tea or black tea, added by the sweetness of wintermelon syrup");
         }
+
+          //---------Green--------------
+                //SOUR
+
+                else if (userSelections.includes("Sour") && userSelections.includes("Very")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Grapefruit Green Tea";
+          printImage("grapefruit.png");
+          printDescription("A cold refreshing tea with a sour zing of grapefruit syrup added to green tea or black tea base.");
+        }
+        else if (userSelections.includes("Sour") && userSelections.includes("Mild")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Passionfruit Green Tea";
+          printImage("passion.png");
+          printDescription("Passion Fruit tea is slightly tart with a tropical tang that is offset perfectly by the creamy sweet tea. Can be combined with either green tea or black tea.");
+        }
+
+        else if (userSelections.includes("Sour") && userSelections.includes("Reg")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Pineapple Green Tea";
+          printImage("pineapple.png");
+          printDescription("Pineapple Boba Tea can be prepared as either a Black Tea or Green Tea. Either choice is mixed with Pineapple syrup to give it a more refreshing sour taste.");
+        }
+
+        //SWEET
+        else if (userSelections.includes("Sweet") && userSelections.includes("Very")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Lychee Green Tea";
+          printImage("lychee.png");
+          printDescription("A refreshing sweet drink with a taste of green tea or black tea, added by the sweetness of lychee syrup");
+        }
+        else if ((userSelections.includes("Sweet") && userSelections.includes("Reg")&& userSelections.includes("Green")) || (userSelections.includes("Sweet") && userSelections.includes("Mild")& userSelections.includes("Green"))) {
+          document.getElementById("resultText").innerText = "Peach Green Tea";
+          printImage("peach.png");
+          printDescription("Peach Tea is very light, refreshing, and fruity. The black tea or green tea is actually quite hidden in this drink.");
+        }
+
+        //TART
+        else if (userSelections.includes("Tart") && userSelections.includes("Mild")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Mango Green Tea";
+          printImage("mango.png");
+          printDescription("Mango tea is very tart with a tropical tang that is offset perfectly by green tea or black tea.");
+        }
+
+        else if (userSelections.includes("Tart") && userSelections.includes("Reg")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Strawberry Green Tea";
+          printImage("strawberry.png");
+          printDescription("Strawberry Boba Tea can be prepared as either a Black Tea or Green Tea. Either choice is mixed with a Strawberry syrup to give it a more refreshing taste.");
+        }
+        else if (userSelections.includes("Tart") && userSelections.includes("Very")&& userSelections.includes("Green")) {
+          document.getElementById("resultText").innerText = "Wintermelon Green Tea";
+          printImage("wintermelon.png");
+          printDescription("A refreshing drink with a taste of green tea or black tea, added by the sweetness of wintermelon syrup");
+        }
+
+
+        
       }
+    }
+    function printDescription(description)
+    {
+      var p = document.getElementById("description");
+      p.innerText = description;
+      console.log(p);
     }
 
     function printImage(thisImg) {
@@ -553,7 +718,7 @@
           page = 3;  
       }
       else if (userSelections.length == 3) {
-        if (userSelections[2] == "Mild" || userSelections[2] == "Regular" || userSelections[2] == "Very")
+        if (userSelections[2] == "Mild" || userSelections[2] == "Reg" || userSelections[2] == "Very")
           page = 5;
         else if (userSelections[2] == "Sweet" || userSelections[2] == "Sour" || userSelections[2] == "Tart")
           page = 4;
