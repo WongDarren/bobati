@@ -295,7 +295,6 @@
                 </div>
               </form>
 
-            <button class ="yelp" >Find Stores on Yelp</button>
 
             </div>
 
@@ -391,14 +390,7 @@
     var pages = document.querySelectorAll(".page");
     var back = document.querySelectorAll(".backBtn");
     var submitResults = document.querySelector(".submitResults");
-    var yelpButton = document.querySelector(".yelp");
 
-    yelpButton.addEventListener("click", function(){
-      //once this button is clicked immediately do a post request
-      var selections = JSON.stringify(userSelections);
-      $.post('/results', {results: selections});
-
-    })
     // loop for adding selections to an array
     for (i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener("click", function() {
