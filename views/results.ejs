@@ -219,7 +219,7 @@
     <!-- START nav -->
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand js-scroll-trigger" href="/"><%= title %></a>
+	      <a class="navbar-brand js-scroll-trigger" href="/"><%= title %> (提)</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -288,8 +288,14 @@
               <button class="btnSelection mb-1" data-eval="Floral">Floral</button>
               <a class="backBtn">Go Back</a>
             </div>
-            <!-- This is the last page (results) -->
             <div class="page page8">
+              <p class="question">Your choices led to two options, which would you prefer?</p> <!-- This is for the bitter choice -->
+              <button class="btnSelection mb-1" data-eval="Rose">Rose</button>
+              <button class="btnSelection mb-1" data-eval="Jasmine">Jasmine</button>
+              <a class="backBtn">Go Back</a>
+            </div>
+            <!-- This is the last page (results) -->
+            <div class="page page9">
               <p class="question" id="resultText"></p>
               <p id="description" class = "desc"> </p>
               <br>
@@ -435,10 +441,12 @@
             page = 5;
         }
         else if (userSelections.length == 4) {
-          if (userSelections[3] == "Fruity" || userSelections[3] == "Earthy" || userSelections[3] == "Milky" || userSelections[3] == "Floral")
-            page = 8;
+          if (userSelections[3] == "Floral")
+            page = 1;
+          else if (userSelections[3] == "Fruity" || userSelections[3] == "Earthy" || userSelections[3] == "Milky" || userSelections[3] == "Floral")
+            page = 9;
           else (userSelections[3] == "Mild" || userSelections[3] == "Reg" || userSelections[3] == "Very")
-            page = 8;
+            page = 9;
         }
         //update progress bar
         console.log(page);
